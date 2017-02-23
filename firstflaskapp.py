@@ -14,17 +14,19 @@ app = Flask(__name__)
 if __name__ == '__main__':
 	app.run()
 
+
+
+#define a route /, return some text with instructions
+@app.route('/')
+def homePage():
+	return 'GO TO /random/ TO GET A RANDOM NUMBER. PASS A GEOCODED JSON TO /senator/ TO RETRIEVE YOUR SENATORS'
+
 #define a route /random/, bind a function showRandom(), and return a random number
 @app.route('/random/')
 def showRandom():
 	import random
 	myRandom = random.random()
 	return str(myRandom)
-
-#define a route /, return some text with instructions
-@app.route('/')
-def homePage():
-	return 'GO TO /random/ TO GET A RANDOM NUMBER. PASS A GEOCODED JSON TO /senator/ TO RETRIEVE YOUR SENATORS'
 
 #define a route /senator that accepts the POST method only, access latitude and longitude and convert to floats, then pass to getMySenator
 @app.route('/senator/', methods =['POST'])
@@ -33,7 +35,6 @@ def senatorPage():
 		userLatitude = float(userLocation['latitude'])
 		userLongitude = float(userLocation['longitude'])
 		yourSenators = json.dumps(getMySenator(userLatitude,userLongitude))
-		print('a')
 		return yourSenators
 
 

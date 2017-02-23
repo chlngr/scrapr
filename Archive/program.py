@@ -12,7 +12,7 @@ def getAllSenators():
 
 	#set a user agent header because the senate webpage requires it
 	userHeaders = {
-	                'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
+					'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
 	}
 
 	#define the url as a variable
@@ -61,48 +61,48 @@ def getAllSenators():
 	#create intermediate variables for the parsed information, then use regex to correct
 	#Luther Strange does not yet have a contact, handle using if statements to leave blank. Remove conditionality when his website us updated
 	#Note - this handles middle initials well, but may not handle double-barreled last names correctly
-	        
-	        if i <= 84:
-	                workLastName = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[0]
-	                workFirstName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[0]
-	                try:
-	                        workMiddleName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[1]
-	                except IndexError:
-	                        workMiddleName = ''
-	                workParty = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[1]
-	                workState = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[2]
-	                workAddress = workList[i*4+1].getText()
-	                workPhone = workList[i*4+2].getText()
-	                workContact = workList[i*4+3].getText().split()[1]
-	                workClass = classList[i].getText()
-	        elif i == 85:
-	                workLastName = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[0]
-	                workFirstName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[0]
-	                try:
-	                        workMiddleName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[1]
-	                except IndexError:
-	                        workMiddleName = ''
-	                workParty = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[1]
-	                workState = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[2]
-	                workAddress = workList[i*4+1].getText()
-	                workPhone = workList[i*4+2].getText()
-	                workContact = ""
-	                workClass = classList[i].getText()
-	        else:
-	                workLastName = re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[0].split(',')[0]
-	                workFirstName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[0].split(',')[1])[0]
-	                try:
-	                        workMiddleName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[1]
-	                except IndexError:
-	                        workMiddleName = ''
-	                workParty = re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[1]
-	                workState = re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[2]
-	                workAddress = workList[i*4+1-1].getText()
-	                workPhone = workList[i*4+2-1].getText()
-	                workContact = workList[i*4+3-1].getText().split()[1]
-	                workClass = classList[i].getText()
-	        senatorDict = {'lastName': workLastName,'firstName': workFirstName,'middleName': workMiddleName,'partyAffiliation': workParty,'state': workState,'class': workClass,'officeAddress': workAddress,'contactFormURL': workContact,'contactTelephone': workPhone}
-	        senatorsList.append(senatorDict)
+			
+			if i <= 84:
+					workLastName = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[0]
+					workFirstName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[0]
+					try:
+							workMiddleName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[1]
+					except IndexError:
+							workMiddleName = ''
+					workParty = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[1]
+					workState = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[2]
+					workAddress = workList[i*4+1].getText()
+					workPhone = workList[i*4+2].getText()
+					workContact = workList[i*4+3].getText().split()[1]
+					workClass = classList[i].getText()
+			elif i == 85:
+					workLastName = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[0]
+					workFirstName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[0]
+					try:
+							workMiddleName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[1]
+					except IndexError:
+							workMiddleName = ''
+					workParty = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[1]
+					workState = re.sub('\s|[()]','',workList[i*4].getText()).split('-')[2]
+					workAddress = workList[i*4+1].getText()
+					workPhone = workList[i*4+2].getText()
+					workContact = ""
+					workClass = classList[i].getText()
+			else:
+					workLastName = re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[0].split(',')[0]
+					workFirstName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[0].split(',')[1])[0]
+					try:
+							workMiddleName = re.findall('[A-Z][a-z]*',re.sub('\s|[()]','',workList[i*4].getText()).split('-')[0].split(',')[1])[1]
+					except IndexError:
+							workMiddleName = ''
+					workParty = re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[1]
+					workState = re.sub('\s|[()]','',workList[i*4-1].getText()).split('-')[2]
+					workAddress = workList[i*4+1-1].getText()
+					workPhone = workList[i*4+2-1].getText()
+					workContact = workList[i*4+3-1].getText().split()[1]
+					workClass = classList[i].getText()
+			senatorDict = {'lastName': workLastName,'firstName': workFirstName,'middleName': workMiddleName,'partyAffiliation': workParty,'state': workState,'class': workClass,'officeAddress': workAddress,'contactFormURL': workContact,'contactTelephone': workPhone}
+			senatorsList.append(senatorDict)
 
 	#print the list of senators
 	#pprint.pprint(senatorsList)

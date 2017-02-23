@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3
 # Test the flask app.py
 
 import requests, pprint, json
